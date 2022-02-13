@@ -1,0 +1,52 @@
+using static System.Console;
+using System.Collections.Generic;
+using System.Linq;
+namespace ejercicio2 {
+class Programa2 {
+    static void Main(string[] args) {
+       try
+       {
+            while(true){
+        double a, b, c, d;
+        double dis, res, coci, med, porc;
+        int opcion;
+        do
+        {
+           WriteLine(">>> MENU PRINICIPAL <<<");
+           WriteLine("1-Calcular la Distancia"); 
+           WriteLine("2-Calcular la Resta"); 
+           WriteLine("3-Calcular el Cociente "); 
+           WriteLine("4-Calcular la Media "); 
+           WriteLine("5-Calcular el Porcentaje "); 
+           WriteLine(">>>> Digite Opción:"); 
+           opcion=Int32.Parse(ReadLine());
+        } while (!(opcion>=0 && opcion<6));
+        if(opcion==0)break;
+       //numeros aleatorios
+        Random r=new Random();
+        a=r.Next(1,6);
+        b=r.Next(1,6);
+        c=r.Next(1,6);
+        d=r.Next(1,6);
+        // operaciones
+        switch(opcion)
+        {
+            case 1:
+                dis=Math.Pow(Math.Pow((a-b),3) + Math.Pow((c-d),3),0.125);
+                WriteLine($"a={a} - b={b} - c={c} - d={d}");
+                WriteLine($"la distancia es: {dis}");
+                    break;
+            default: WriteLine("espere");
+                    break;
+        }
+        }
+        
+       }
+       catch (Exception ex)
+       {
+           WriteLine($"error = {ex.Message}");
+       }
+       Console.ReadKey();
+    }
+}
+}
