@@ -1,0 +1,52 @@
+using System;
+using static System.Console;
+using System.Collections.Generic;
+using System.Linq;
+
+class ejercicio1 {
+    static void main(string[] args) {
+   try
+   {
+        while(true){
+        int dia;
+        string nombre;
+        double saldo=1000000, retiro, saldofinal;
+        //ingresar nombre
+           WriteLine("ingrese su nombre o * para salir"); 
+           nombre=ReadLine();
+        if(nombre=="*") break;
+        if(nombre=="simon zapata")saldo=saldo+500000;
+        //numero aleatorio
+        Random r=new Random();
+        dia=r.Next(0,4);
+        //ingresar saldo a retirar
+        do{
+            WriteLine("Ingrese el monto a retirar: ");
+            retiro=Double.Parse(ReadLine());
+        }while(!(retiro%10000==0 && retiro>=20000 && retiro<=1200000));
+        if(retiro>saldo) {
+            WriteLine("Saldo insuficiente"); break;
+        }
+        saldofinal=saldo-retiro;
+        //imprimir
+        switch(dia){
+            case 1: WriteLine($"Buenos días senor(a) {nombre}");break;
+            case 2: WriteLine($"Buenos días senor(a) {nombre}");break;
+            case 3: WriteLine($"Buenos días senor(a) {nombre}");break;
+        }
+        WriteLine($"Saldo inicial: {saldo:C}");
+        WriteLine($"Monto de retiro: {retiro:C}");
+        WriteLine($"Saldo final: {saldofinal:C}");
+    }
+   }
+   catch (Exception ex)
+   {
+        WriteLine($"error detectado: {ex.Message}");       
+   }
+    finally
+    {
+        WriteLine("EJECUCIÓN EXITOSA");
+    }
+    ReadKey();
+    }
+}
