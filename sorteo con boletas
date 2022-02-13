@@ -1,0 +1,40 @@
+using System;
+using static System.Console;
+using System.Collections.Generic;
+using System.Linq;
+
+class ejercicio2 {
+    static void Main(string[] args) {
+    int ganador;
+    Random r=new Random();
+    ganador=r.Next(10,21);
+    WriteLine($"la boleta ganadora es: {ganador}");
+    while (true)
+    {
+        string nombre;
+        int boleta1, boleta2=0;
+        //ingresar nombre
+        WriteLine("Ingrese su nombre o * para salir");
+        nombre=ReadLine();
+        if(nombre=="*")break;
+        //boleta aleatoria
+        boleta1=r.Next(10,21);
+        WriteLine($"senor(a) {nombre} su número de boleta es {boleta1}");
+        //condiciones
+        if(boleta1==ganador){
+            boleta2=r.Next(1,4);
+            WriteLine("Segunda boleta!!!!!");
+        }
+        else{
+            WriteLine("¡gracias por participar!");
+        }
+        switch (boleta2)
+        {
+            case 1: WriteLine($"senor(a) {nombre}, con la boleta #{boleta2} ganó un tv");break;
+            case 2: WriteLine($"senor(a) {nombre}, con la boleta #{boleta2} ganó una lavadora");break;
+            case 3: WriteLine($"senor(a) {nombre}, con la boleta #{boleta2} ganó un pc");break;
+        }
+    }
+    ReadKey();
+    }
+}
