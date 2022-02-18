@@ -1,0 +1,51 @@
+using System;
+using static System.Console;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        int k=Convert.ToInt32(ReadLine());
+        int n=Convert.ToInt32(ReadLine());
+        string [] cadena= ReadLine().Split(' ');
+        int [] mates=new int[n];
+        int [] lenguaje=new int[n];
+        int auxmates=0, auxlen=0; 
+        for(int i=0; i<cadena.Length;i++){
+            if(i%2==0){
+            mates[i]=Convert.ToInt32(ReadLine());
+            }
+            else{
+                lenguaje[i]=Convert.ToInt32(ReadLine());
+            }
+        }
+        for(int i=0;i<mates.Length-1;i++){
+            for(int j=0;j<mates.Length-1;j++){
+                if(mates[i]>=mates[i+1]){
+                    auxmates=mates[i+1];
+                    mates[i+1]=mates[i];
+                    mates[i]=auxmates;
+                }
+            }
+        }
+        for(int i=0;i<lenguaje.Length-1;i++){
+            for(int j=0;j<lenguaje.Length-1;j++){
+                if(lenguaje[i]>=lenguaje[i+1]){
+                    auxlen=lenguaje[i+1];
+                    lenguaje[i+1]=lenguaje[i];
+                    lenguaje[i]=auxlen;
+                }
+            }
+        }
+        for(int i=0;i<1;i++){
+        if(mates[0]>lenguaje[0]){
+            WriteLine("1");
+        }
+            else if(mates[0]<lenguaje[0]){
+                WriteLine("-1");
+            }
+            else{
+                WriteLine("0");
+            }
+        }
+    }
+}
