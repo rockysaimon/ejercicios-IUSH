@@ -1,0 +1,51 @@
+using System;
+using static System.Console;
+namespace MyCompiler {
+    class Program {
+        public static void Main(string[] args) {
+            int [,] matriz=new int [8,8];
+            Random r=new Random();
+            for(int f=0;f<8;f++){
+                for(int c=0;c<8;c++){
+                    matriz[f,c]=r.Next(1,11);
+                }
+            }
+            for(int f=0;f<8;f++){
+                for(int c=0;c<8;c++){
+                    Write($"{matriz[f,c]}     ");
+                }
+                WriteLine("");
+            }
+           //elemento mayor de la diagonal principal
+           int maydiaprin=0, posimaydiprin=0;
+           for(int i=0;i<8;i++){
+               if(matriz[i,i]>maydiaprin){
+                   maydiaprin=matriz[i,i];
+                   posimaydiprin=i;
+               }
+           }
+           WriteLine($"\nmayor: {maydiaprin} en posición [{posimaydiprin},{posimaydiprin}]\n");
+            
+            int j=0, mendiasec=99999, posmensec=0, posmen=0;
+            for(int i=0;i<8;i++){
+                if(matriz[j,8-1-i]<mendiasec){
+                    mendiasec=matriz[j,8-1-i];
+                    posmensec=8-1-i;
+                    posmen=j;
+                }
+                j++;
+            }
+            WriteLine($"\nMenor: {mendiasec} en posición [{posmen},{posmensec}]");
+            
+            for(int f=0;f<8;f++){
+                for(int c=0;c<8;c++){
+                    if((f+c)%2==0){
+                        Write($"{matriz[f,c]} ");
+                    } 
+                }
+                WriteLine("");
+            }
+            
+        }
+    }
+}
